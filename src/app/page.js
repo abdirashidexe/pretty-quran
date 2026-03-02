@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import styles from "./page.module.css";
 
 const featuredSurahs = [
@@ -10,10 +14,23 @@ const featuredSurahs = [
 ];
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
+  const [theme, setTheme] = useState("dark");
 
-      {/* Navigation Bar */}
+  useEffect(() => {
+    const saved = localStorage.getItem("quran-theme");
+    if (saved) setTheme(saved);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    localStorage.setItem("quran-theme", next);
+  };
+
+  const isLight = theme === "light";
+
+  return (
+    <div className={`${styles.page} ${isLight ? styles.light : ""}`}>
       <nav className={styles.navbar}>
         <div className={styles.navInner}>
           <div className={styles.navBrand}>
@@ -21,36 +38,49 @@ export default function Home() {
             <span className={styles.navTitle}>Qur&apos;an</span>
           </div>
           <ul className={styles.navLinks}>
-            <li><a href="#" className={styles.navLink}>Home</a></li>
+            <li><Link href="/" className={styles.navLink}>Home</Link></li>
             <li><a href="#" className={styles.navLink}>Surahs</a></li>
             <li><a href="#" className={styles.navLink}>Juz</a></li>
             <li><a href="#" className={styles.navLink}>Bookmarks</a></li>
             <li><a href="#" className={styles.navLink}>Settings</a></li>
           </ul>
-          <div className={styles.navSearch}>
-            <input
-              type="text"
-              placeholder="Search surah or verse..."
-              className={styles.searchInput}
-            />
+          <div className={styles.navActions}>
+            <div className={styles.navSearch}>
+              <input
+                type="text"
+                placeholder="Search surah or verse..."
+                className={styles.searchInput}
+              />
+            </div>
+            <button
+              onClick={toggleTheme}
+              className={styles.themeToggle}
+              aria-label="Toggle light/dark mode"
+              title={isLight ? "Switch to dark mode" : "Switch to light mode"}
+            >
+              <span className={styles.themeToggleTrack}>
+                <span className={`${styles.themeToggleThumb} ${isLight ? styles.thumbLight : ""}`} />
+              </span>
+              <span className={styles.themeToggleIcon}>
+                {isLight ? "☀️" : "🌙"}
+              </span>
+            </button>
           </div>
         </div>
       </nav>
 
       <main className={styles.main}>
-
-        {/* Hero */}
         <section className={styles.hero}>
           <p className={styles.heroArabic}>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
           <p className={styles.heroTranslation}>In the name of Allah, the Most Gracious, the Most Merciful</p>
         </section>
 
-        {/* Surah Grid */}
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>Browse Surahs</h2>
           <div className={styles.surahGrid}>
             {featuredSurahs.map((surah) => (
-              <a href="#" key={surah.number} className={styles.surahCard}>
+              // ✅ Next Link, correct href
+              <Link href={`/surah/${surah.number}`} key={surah.number} className={styles.surahCard}>
                 <div className={styles.surahNumber}>{surah.number}</div>
                 <div className={styles.surahInfo}>
                   <h3 className={styles.surahName}>{surah.name}</h3>
@@ -58,11 +88,10 @@ export default function Home() {
                   <p className={styles.surahVerses}>{surah.verses} verses</p>
                 </div>
                 <div className={styles.surahArabic}>{surah.arabic}</div>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
-
       </main>
 
       <footer className={styles.footer}>
