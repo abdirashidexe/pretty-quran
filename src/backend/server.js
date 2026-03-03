@@ -40,4 +40,15 @@ app.get('/api/surah/:id/verses', async (req, res) => {
   }
 });
 
+app.get('/api/juz', async (req, res) => {
+  try {
+    const response = await fetch('https://api.quran.com/api/v4/juzs');
+
+    const data = await response.json();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch juz' })
+  }
+})
+
 app.listen(3001, () => console.log('Express on port 3001'));
