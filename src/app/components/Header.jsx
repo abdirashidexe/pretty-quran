@@ -1,7 +1,10 @@
 "use client";
 import Link from "next/link";
+import { useTheme } from "./../context/ThemeContext"
 
 export default function Header() {
+  const { isDark, toggleDark } = useTheme();
+
   return (
     <nav className="navbar">
       <div className="navInner">
@@ -11,10 +14,10 @@ export default function Header() {
         </div>
         <ul className="navLinks">
           <li><Link href="/" className="navLink">Home</Link></li>
-          <li><a href="#" className="navLink">Surahs</a></li>
-          <li><a href="#" className="navLink">Juz</a></li>
-          <li><a href="#" className="navLink">Bookmarks</a></li>
-          <li><a href="#" className="navLink">Settings</a></li>
+          <li><Link href="/surahs" className="navLink">Surahs</Link></li>
+          <li><Link href="/juzs" className="navLink">Juz</Link></li>
+          <li><Link href="/bookmarks" className="navLink">Bookmarks</Link></li>
+          <li><Link href="/settings" className="navLink">Settings</Link></li>
         </ul>
         <div className="navActions">
           <div className="navSearch">
@@ -24,6 +27,9 @@ export default function Header() {
               className="searchInput"
             />
           </div>
+        </div>
+        <div>
+          <button onClick={toggleDark} className="toggle-btn">{isDark ? "☀️" : "🌙"}</button>
         </div>
       </div>
     </nav>

@@ -1,5 +1,6 @@
 "use client";
 import "./globals.css";
+import { ThemeProvider } from "./context/ThemeContext";
 
 export default function RootLayout({ children }) {
   return (
@@ -10,7 +11,12 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
       </head>
       <body>
-          {children}
+          <ThemeProvider> 
+            {children} 
+          </ThemeProvider>
+          {/* Abdirashid's Notes */}
+          {/* {children} <-- is my entire app */}
+          {/* UseTheme() is now available to every single component :O Wthh.. */}
       </body>
     </html>
   );

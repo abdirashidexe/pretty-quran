@@ -3,7 +3,7 @@ import cors from 'cors'
 
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3001']}));
 app.use(express.json());
 
 app.get('/api/surah/:id', async (req, res) => {
@@ -48,6 +48,22 @@ app.get('/api/juz', async (req, res) => {
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch juz' })
+  }
+})
+
+app.get('/api/chapter_recitations/:id/:chapter_number', async (req, res) => {
+  
+  const { id, chapter_number } = req.params;
+
+  try {
+    const response = await fetch(
+      `https://api.quran.com/api/v4/chapter_recitations/${id}/${chapter_number}`
+    );
+    const data = await response.json() // decoding data i recieved
+    res.json(data) // encoding the data
+    console.log(data)
+  } catch (myError) {
+    res.status(500).json({ error: 'Failed to fetch audio recitation'})
   }
 })
 
