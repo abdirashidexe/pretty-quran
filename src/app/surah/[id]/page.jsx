@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import Header from "./../../components/Header";
 import Footer from "@/app/components/Footer";
 import { useTheme } from "@/app/context/ThemeContext";
+import { eligibleRecitersIds } from "@/app/data/reciters";
 
 export default function SurahPage() {
   const { id } = useParams();
@@ -15,6 +16,7 @@ export default function SurahPage() {
   const [audioSrc, setAudioSrc] = useState(null);
   const [reciterId, setReciterId] = useState(1)
   const [reciters, setReciters] = useState([]);
+  const [selectedMushaf, setSelectedMushaf] = useState(0)
 
   function sortByName(myArray) {
     return myArray.sort((reciter1, reciter2) => reciter1.name.localeCompare(reciter2.name));
@@ -39,28 +41,38 @@ export default function SurahPage() {
       .catch((err) => setError("Failed to load verses."));
   }, [id]);
 
-  // trial #2 for audio UseEffect (now that im trying to display reciters)
+  // EFFECT: Build audio URL whenever the selected reciter or surah changes  useEffect(() => {
   useEffect(() => {
     if (reciters.length === 0) return; // <- don't run until reciters are loaded
 
     const selectedReciter = reciters.find((reciter) => reciter.id === Number(reciterId)); // <- find the reciter the user picked from the reciters array already in state
-    const serverUrl = selectedReciter.moshaf[0].server; // <- grab reciters server URL from mp3quran.net API link
-    const paddedId = String(id).padStart(3, "0"); // <- turn "1" into "001", "24" into "024" etc.
-  
-    setAudioSrc(serverUrl + paddedId + ".mp3"); // <- build the full URL and set it
-  }, [id, reciterId, reciters])
+    if (!selectedReciter) return;
 
-  // separate useEffect just for fetching list of Reciters from backend. Runs once!
+    const userSelectedMushaf = selectedReciter.moshaf.find((mushaf) => mushaf.id === Number(selectedMushaf));
+    if (!userSelectedMushaf) return;
+
+    const serverUrl = userSelectedMushaf.server; // <- grab reciters server URL from mp3quran.net API link
+    const paddedId = String(id).padStart(3, "0"); // <- turn "1" into "001", "24" into "024" etc.
+
+    setAudioSrc(serverUrl + paddedId + ".mp3"); // <- build the full URL and set it
+  }, [id, reciterId, reciters, selectedMushaf]);
+
+  // EFFECT: Fetch full reciter list from backend once on mount  useEffect(() => {
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reciters`)
       .then((res) => res.json())
       .then(data => {
         const sortedReciters = sortByName(data.reciters)
-        setReciters(sortedReciters)
-        setReciterId(sortedReciters[0].id) // <- whoever is first alphabetically replaces default & becomes new default
+        const filteredReciters = sortedReciters.filter(reciter => eligibleRecitersIds.includes(reciter.id))
+        setReciters(filteredReciters)
+        setReciterId(filteredReciters[0].id) // <- whoever is first alphabetically replaces default & becomes new default
+        setSelectedMushaf(filteredReciters[0].moshaf[0].id)
       })
-      .catch((err) => setError("Failed to load reciters"))
-  }, [])
+      .catch(() => setError("Failed to load reciters"));
+  }, []);
+
+  const selectedReciter = reciters.find(reciter => reciter.id === Number(reciterId))
+  const moshafList = selectedReciter ? selectedReciter.moshaf : [];
 
   if (loading) return <div className="state">Loading...</div>;
   if (error) return <div className="state">{error}</div>;
@@ -83,9 +95,23 @@ export default function SurahPage() {
         </section>
         <section className="section">
           <h2 className="sectionTitle">Audio</h2>
-          <select onChange={(e) => setReciterId(e.target.value)} value={reciterId} className="reciterSelect">
+          <select onChange={(e) => {
+            setReciterId(e.target.value);
+            const newReciterSelected = reciters.find(reciter => reciter.id === Number(e.target.value));
+            setSelectedMushaf(newReciterSelected.moshaf[0].id);
+          }}
+            value={reciterId}
+            className="reciterSelect">
             {reciters.map((reciter) => (
               <option key={reciter.id} value={reciter.id} defaultValue={reciters[0]}>{reciter.name}</option>
+            ))}
+          </select>
+          <select onChange={(e) =>
+            setSelectedMushaf(e.target.value)}
+            value={selectedMushaf}
+            className="reciterSelect">
+            {moshafList.map((riwayah) => (
+              <option key={riwayah.id} value={riwayah.id} defaultValue={riwayah[0]}>{riwayah.name}</option>
             ))}
           </select>
           <audio controls src={audioSrc} className="audioPlayer"></audio>

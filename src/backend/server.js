@@ -67,14 +67,17 @@ app.get('/api/chapter_recitations/:id/:chapter_number', async (req, res) => {
   }
 })
 
+const eligible_reciters_ids = [];
+
 app.get("/api/reciters", async (req, res) => {
   try {
     const response = await fetch(
       'https://www.mp3quran.net/api/v3/reciters?language=eng'
     );
     const data = await response.json();
+    // const filtered;
     res.json(data);
-    console.log(data)
+    // console.log(data)
   } catch (myErr) {
     res.status(500).json({ error: 'Failed to fetch list of reciters '})
   }
