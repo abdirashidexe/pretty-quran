@@ -13,6 +13,12 @@ export default function SurahPage() {
   const [error, setError] = useState(null);
   const { theme, isDark } = useTheme();
   const [audioSrc, setAudioSrc] = useState(null);
+  const [reciterId, setReciterId] = useState(1)
+  const [reciters, setReciters] = useState([]);
+
+  function sortByName(myArray) {
+    return myArray.sort((reciter1, reciter2) => reciter1.name.localeCompare(reciter2.name));
+  }
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/surah/${id}`)
@@ -31,14 +37,30 @@ export default function SurahPage() {
         setVerses(data.verses);
       })
       .catch((err) => setError("Failed to load verses."));
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/chapter_recitations/1/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data)
-        setAudioSrc(data.audio_file.audio_url)
-      })
-      .catch((err) => setError("Failed to load audio"));
   }, [id]);
+
+  // trial #2 for audio UseEffect (now that im trying to display reciters)
+  useEffect(() => {
+    if (reciters.length === 0) return; // <- don't run until reciters are loaded
+
+    const selectedReciter = reciters.find((reciter) => reciter.id === Number(reciterId)); // <- find the reciter the user picked from the reciters array already in state
+    const serverUrl = selectedReciter.moshaf[0].server; // <- grab reciters server URL from mp3quran.net API link
+    const paddedId = String(id).padStart(3, "0"); // <- turn "1" into "001", "24" into "024" etc.
+  
+    setAudioSrc(serverUrl + paddedId + ".mp3"); // <- build the full URL and set it
+  }, [id, reciterId, reciters])
+
+  // separate useEffect just for fetching list of Reciters from backend. Runs once!
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reciters`)
+      .then((res) => res.json())
+      .then(data => {
+        const sortedReciters = sortByName(data.reciters)
+        setReciters(sortedReciters)
+        setReciterId(sortedReciters[0].id) // <- whoever is first alphabetically replaces default & becomes new default
+      })
+      .catch((err) => setError("Failed to load reciters"))
+  }, [])
 
   if (loading) return <div className="state">Loading...</div>;
   if (error) return <div className="state">{error}</div>;
@@ -59,10 +81,14 @@ export default function SurahPage() {
             <span>Surah {surah.id}</span>
           </div>
         </section>
-        <section>
+        <section className="section">
           <h2 className="sectionTitle">Audio</h2>
-          <audio controls src={audioSrc}></audio>
-          <p><i>Currently only support: Abdul_Baset</i></p>
+          <select onChange={(e) => setReciterId(e.target.value)} value={reciterId} className="reciterSelect">
+            {reciters.map((reciter) => (
+              <option key={reciter.id} value={reciter.id} defaultValue={reciters[0]}>{reciter.name}</option>
+            ))}
+          </select>
+          <audio controls src={audioSrc} className="audioPlayer"></audio>
         </section>
         <section className="section">
           <h2 className="sectionTitle">Verses</h2>
