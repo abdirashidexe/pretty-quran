@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import Header from "./../../components/Header";
 import Footer from "@/app/components/Footer";
 import { useTheme } from "@/app/context/ThemeContext";
-import { eligibleRecitersIds } from "@/app/data/reciters";
+import { eligibleRecitersIds2, eligibleRecitersIds } from "@/app/data/reciters";
 
 export default function SurahPage() {
   const { id } = useParams();
@@ -63,7 +63,8 @@ export default function SurahPage() {
       .then((res) => res.json())
       .then(data => {
         const sortedReciters = sortByName(data.reciters)
-        const filteredReciters = sortedReciters.filter(reciter => eligibleRecitersIds.includes(reciter.id))
+        const filteredReciters = sortedReciters.filter(reciter => eligibleRecitersIds2.includes(reciter.id))
+        console.log(filteredReciters)
         setReciters(filteredReciters)
         setReciterId(filteredReciters[0].id) // <- whoever is first alphabetically replaces default & becomes new default
         setSelectedMushaf(filteredReciters[0].moshaf[0].id)
@@ -73,6 +74,7 @@ export default function SurahPage() {
 
   const selectedReciter = reciters.find(reciter => reciter.id === Number(reciterId))
   const moshafList = selectedReciter ? selectedReciter.moshaf : [];
+  console.log("MOSHAFLIST: " + JSON.stringify(moshafList))
 
   if (loading) return <div className="state">Loading...</div>;
   if (error) return <div className="state">{error}</div>;
@@ -103,7 +105,7 @@ export default function SurahPage() {
             value={reciterId}
             className="reciterSelect">
             {reciters.map((reciter) => (
-              <option key={reciter.id} value={reciter.id} defaultValue={reciters[0]}>{reciter.name}</option>
+              <option key={reciter.id} value={reciter.id} defaultValue={reciters[0]}>{eligibleRecitersIds.find(r => r.id === reciter.id).displayName}</option>
             ))}
           </select>
           <select onChange={(e) =>
@@ -111,7 +113,7 @@ export default function SurahPage() {
             value={selectedMushaf}
             className="reciterSelect">
             {moshafList.map((riwayah) => (
-              <option key={riwayah.id} value={riwayah.id} defaultValue={riwayah[0]}>{riwayah.name}</option>
+              <option key={riwayah.id} value={riwayah.id} defaultValue={riwayah[0]}>{eligibleRecitersIds.find(r => r.id === selectedReciter.id).riwayat[riwayah.id]}</option>
             ))}
           </select>
           <audio controls src={audioSrc} className="audioPlayer"></audio>
