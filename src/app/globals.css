@@ -708,6 +708,14 @@ body {
     border-radius: var(--radius-sm);
 }
 
+/* ─── Selects & Options ─────────────────────────────────────────── */
+select, option {
+    -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: 'Poppins' !important;
+}
+
 /* ─── Footer ─────────────────────────────────────────── */
 .footer {
   text-align: center;

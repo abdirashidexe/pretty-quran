@@ -3,184 +3,206 @@ export const eligibleRecitersIds = [
         id: 50,
         displayName: "AbdulBari Muhammad",
         riwayat: {
-            169: "Almusshaf Al Mo'lim - Almusshaf Al Mo'lim", // ?
-            50: "Hafs 'an 'Asim - Murattal" // Murattal?
+            169: "(Mu'allim)",
+            50: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 51,
         displayName: "AbdulBasit AbdulSamad",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            53: "Hafs 'an 'Asim (Murattal)",
+            52: "Warsh 'an Nafi' (Murattal)",
+            51: "(Mujawwad)"
         }
     },
     {
         id: 243,
         displayName: "Abdullah Al Musa",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            286: "(Mu'allim)",
+            243: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 64,
         displayName: "AbdulRashid Ali Sufi",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            258: "Hafs 'an 'Asim (Murattal)",
+            65: "As-Soosi 'an Abi 'Amr (Murattal)",
+            64: "Khalaf 'an Hamzah (Murattal)"
         }
     },
     {
         id: 265,
         displayName: "Ahmad Diibaan",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            313: "Ibn Jammaz A'n Abi Ja'far - Murattal",
+            312: "Hesham A'n Abi A'mer - Murattal",
+            311: "Khalaf 'an Hamzah (Murattal)",
+            310: "Ad-Doori ‘an Al-Kisa'i (Murattal)",
+            309: "As-Soosi 'an Abi 'Amr (Murattal)",
+            308: "Ibn Thakwan A'n Ibn Amer - Murattal",
+            301: "Warsh 'an Nafi' (Murattal) Men Tariq Alazraq",
+            285: "Ad-Doori 'an Abi 'Amr (Murattal)",
+            280: "Qaloon 'an 'Nafi (Murattal)",
+            279: "Al-Bazzi 'an Ibn Katheer (Murattal)",
+            278: "Rewayat Qunbol A'n Ibn Katheer - Murattal",
+            276: "Shu'bah 'an 'Asim (Murattal)",
+            265: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 278,
         displayName: "Ahmad Isa Al Ma'saraawi",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            290: "Rewayat Rowis and Rawh A'n Yakoob Al Hadrami  - Murattal",
+            289: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 201,
         displayName: "Ahmad Al Tarabulsi",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            201: "Hafs 'an 'Asim (Murattal)",
+            199: "Qaloon 'an 'Nafi (Murattal)"
         }
     },
     {
         id: 74,
         displayName: "Ali Al Hudhayfi",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            305: "Shu'bah 'an 'Asim (Murattal)",
+            75: "Qaloon 'an 'Nafi (Murattal)",
+            74: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 178,
         displayName: "Ibrahim Al Dossari",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            232: "Hafs 'an 'Asim (Murattal)",
+            178: "Warsh 'an Nafi' (Murattal)"
         }
     },
     {
         id: 102,
         displayName: "Mahir Al Mu'aiqly",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            133: "(Mujawwad)",
+            103: "(Mu'allim)",
+            102: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id:  121,
         displayName: "Mahmoud Ali Al Banna",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            122: "(Mujawwad)",
+            121: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 118,
         displayName: "Mahmoud Khalil Al Hussary",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            270: "Qaloon 'an 'Nafi (Murattal)",
+            269: "Ad-Doori 'an Abi 'Amr (Murattal)",
+            120: "Warsh 'an Nafi' (Murattal)",
+            119: "(Mujawwad)",
+            118: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 123, 
         displayName: "Mishari Al'afasi",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            124: "Ad-Doori ‘an Al-Kisa'i (Murattal)",
+            123: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 115,
         displayName: "Muhammad AbdulKariim",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            210: "Warsh 'an Nafi' (Murattal) Men  Tariq Abi Baker Alasbahani",
+            115: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 116, 
         displayName: "Muhammad Al Abdullah",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            117: "Ad-Doori ‘an Al-Kisa'i (Murattal)",
+            116: "Al-Bazzi 'an Ibn Katheer and Qunbol A'n Ibn Katheer - Murattal"
         }
     },
     {
         id: 106, 
         displayName: "Muhammad Al Tablaawi",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            10912: "(Mujawwad)",
+            106: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 109, 
         displayName: "Muhammad Ayyub",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            320: "Rewayat Hafs A'n Assem - 4",
+            109: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 112, 
         displayName: "Muhmmad Siddiq Al Minshaawi",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            114: "(Mu'allim)",
+            113: "(Mujawwad)",
+            112: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 129, 
         displayName: "Muftaah Al Saltaani",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            196: "Ibn Thakwan A'n Ibn Amer - Murattal",
+            195: "Shu'bah 'an 'Asim (Murattal)",
+            182: "Hafs 'an 'Asim (Murattal)",
+            180: "Ad-Doori ‘an Al-Kisa'i (Murattal)",
+            129: "Ad-Doori 'an Abi 'Amr (Murattal)"
         }
     },
     {
         id: 125, 
         displayName: "Mustafa Ismail",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            288: "(Mujawwad)",
+            125: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 272, 
         displayName: "Okasha Kameni",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            296: "Al-Bazzi 'an Ibn Katheer (Murattal)",
+            272: "Ad-Doori ‘an Al-Kisa'i (Murattal)"
         }
     },
         {
         id: 27, 
         displayName: "Rashid Bel'aalya", // verify spelling
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            261: "Hafs 'an 'Asim (Murattal)",
+            27: "Warsh 'an Nafi' (Murattal)"
         }
     },
         {
         id: 44,
         displayName: "Salah Al Hashim",
         riwayat: {
-            0: "Hafs",
-            1: "Warsh"
+            45: "Qaloon 'an 'Nafi (Murattal)",
+            4: "Hafs 'an 'Asim (Murattal)"
         }
     },
 ]

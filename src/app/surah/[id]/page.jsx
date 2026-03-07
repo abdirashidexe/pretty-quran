@@ -64,7 +64,7 @@ export default function SurahPage() {
       .then(data => {
         const sortedReciters = sortByName(data.reciters)
         const filteredReciters = sortedReciters.filter(reciter => eligibleRecitersIds2.includes(reciter.id))
-        console.log(filteredReciters)
+        console.log(filteredReciters[0].moshaf)
         setReciters(filteredReciters)
         setReciterId(filteredReciters[0].id) // <- whoever is first alphabetically replaces default & becomes new default
         setSelectedMushaf(filteredReciters[0].moshaf[0].id)
@@ -74,7 +74,6 @@ export default function SurahPage() {
 
   const selectedReciter = reciters.find(reciter => reciter.id === Number(reciterId))
   const moshafList = selectedReciter ? selectedReciter.moshaf : [];
-  console.log("MOSHAFLIST: " + JSON.stringify(moshafList))
 
   if (loading) return <div className="state">Loading...</div>;
   if (error) return <div className="state">{error}</div>;
