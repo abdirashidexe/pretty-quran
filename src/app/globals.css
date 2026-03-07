@@ -710,10 +710,29 @@ body {
 
 /* ─── Selects & Options ─────────────────────────────────────────── */
 select, option {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   font-family: 'Poppins' !important;
+  max-width: 250px;
+  text-align: center;
+}
+
+audio {
+  max-width: 250px;
+  margin-top: 10px;
+}
+
+#audio-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap:10px;
+}
+
+#audio-section .sectionTitle {
+  margin: 0;
 }
 
 /* ─── Footer ─────────────────────────────────────────── */

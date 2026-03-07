@@ -94,9 +94,10 @@ export default function SurahPage() {
             <span>Surah {surah.id}</span>
           </div>
         </section>
-        <section className="section">
+        <section className="section" id="audio-section">
           <h2 className="sectionTitle">Audio</h2>
-          <select onChange={(e) => {
+          <label for="reciters">🎙️ Reciter</label>
+          <select name="reciters" onChange={(e) => {
             setReciterId(e.target.value);
             const newReciterSelected = reciters.find(reciter => reciter.id === Number(e.target.value));
             setSelectedMushaf(newReciterSelected.moshaf[0].id);
@@ -107,7 +108,8 @@ export default function SurahPage() {
               <option key={reciter.id} value={reciter.id} defaultValue={reciters[0]}>{eligibleRecitersIds.find(r => r.id === reciter.id).displayName}</option>
             ))}
           </select>
-          <select onChange={(e) =>
+          <label label for="riwaayahs">📜 Riwaayah</label>
+          <select name="riwaayahs" onChange={(e) =>
             setSelectedMushaf(e.target.value)}
             value={selectedMushaf}
             className="reciterSelect">
