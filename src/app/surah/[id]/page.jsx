@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import Header from "./../../components/Header";
 import Footer from "@/app/components/Footer";
 import { useTheme } from "@/app/context/ThemeContext";
-import { eligibleRecitersIds2, eligibleRecitersIds } from "@/app/data/reciters";
+import { eligibleRecitersIds } from "@/app/data/reciters";
 
 export default function SurahPage() {
   const { id } = useParams();
@@ -63,9 +63,10 @@ export default function SurahPage() {
       .then((res) => res.json())
       .then(data => {
         const sortedReciters = sortByName(data.reciters)
-        const filteredReciters = sortedReciters.filter(reciter => eligibleRecitersIds2.includes(reciter.id))
-        console.log(filteredReciters[0].moshaf)
+        const ids = eligibleRecitersIds.map(r => r.id);
+        const filteredReciters = sortedReciters.filter(reciter => ids.includes(reciter.id));
         setReciters(filteredReciters)
+        console.log(filteredReciters)
         setReciterId(filteredReciters[0].id) // <- whoever is first alphabetically replaces default & becomes new default
         setSelectedMushaf(filteredReciters[0].moshaf[0].id)
       })
@@ -96,8 +97,8 @@ export default function SurahPage() {
         </section>
         <section className="section" id="audio-section">
           <h2 className="sectionTitle">Audio</h2>
-          <label for="reciters">🎙️ Reciter</label>
-          <select name="reciters" onChange={(e) => {
+          <label>🎙️ Reciter</label>
+          <select onChange={(e) => {
             setReciterId(e.target.value);
             const newReciterSelected = reciters.find(reciter => reciter.id === Number(e.target.value));
             setSelectedMushaf(newReciterSelected.moshaf[0].id);
@@ -108,8 +109,8 @@ export default function SurahPage() {
               <option key={reciter.id} value={reciter.id} defaultValue={reciters[0]}>{eligibleRecitersIds.find(r => r.id === reciter.id).displayName}</option>
             ))}
           </select>
-          <label label for="riwaayahs">📜 Riwaayah</label>
-          <select name="riwaayahs" onChange={(e) =>
+          <label>📜 Riwaayah</label>
+          <select onChange={(e) =>
             setSelectedMushaf(e.target.value)}
             value={selectedMushaf}
             className="reciterSelect">

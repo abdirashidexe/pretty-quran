@@ -9,8 +9,8 @@ export default function Header() {
     <nav className="navbar">
       <div className="navInner">
         <div className="navBrand">
-          <span className="navLogo">☽</span>
-          <span className="navTitle">Qur&apos;an</span>
+          <span className="navLogo">✧</span>
+          <span className="navTitle">Qirayah</span>
         </div>
         <ul className="navLinks">
           <li><Link href="/" className="navLink">Home</Link></li>
@@ -23,7 +23,7 @@ export default function Header() {
           <div className="navSearch">
             <input
               type="text"
-              placeholder="Search surah or verse..."
+              placeholder="Search surah or verse.. (coming soon)"
               className="searchInput"
             />
           </div>

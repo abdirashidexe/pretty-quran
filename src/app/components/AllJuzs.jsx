@@ -15,7 +15,7 @@ export default function AllJuzs({ juzs, surahs, loading }) {
                 ) : (
                     <div className="surahGrid">
                         {juzs.map((juz) => (
-                            <Link href="#" key={juz.juz_number} className="surahCard juzCard">
+                            <Link href={`/surah/${Object.keys(juz.verse_mapping)[0]}`} key={juz.juz_number} className="surahCard juzCard">
                                 <div className="surahNumber">{juz.juz_number}</div>
                                 <div className="surahInfo">
                                     <h3 className="surahName">Juz {juz.juz_number}</h3>
