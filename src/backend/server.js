@@ -3,7 +3,7 @@ import cors from 'cors'
 
 const app = express();
 
-app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3001']}));
+app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3001', "https://www.qirayah.com", "https://qirayah.com"]}));
 app.use(express.json());
 
 app.get('/api/surah/:id', async (req, res) => {
