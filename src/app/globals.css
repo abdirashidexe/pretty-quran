@@ -818,7 +818,7 @@ audio {
 
   .navLinks {
     /* display: none; */
-    border: 2px solid red;
+    /* border: 2px solid red; */
     flex-wrap: wrap;
     flex-flow:wrap;
   }
