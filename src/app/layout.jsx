@@ -1,6 +1,7 @@
 "use client";
 import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
+import { Analytics } from "@vercel/analytics/next"
 
 export default function RootLayout({ children }) {
   return (
