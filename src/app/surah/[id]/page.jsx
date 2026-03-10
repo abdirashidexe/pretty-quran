@@ -72,6 +72,11 @@ export default function SurahPage() {
         const sortedReciters = sortByName(data.reciters)
         const ids = allRecitersIds.map(r => r.id);
         const filteredReciters = sortedReciters.filter(reciter => ids.includes(reciter.id));
+        const savedReciter = localStorage.getItem("quran-reciterId");
+        const savedMushaf = localStorage.getItem("quran-mushaf");
+
+        if (!savedReciter) setReciterId(filteredReciters[0].id);
+        if (!savedMushaf) setSelectedMushaf(filteredReciters[0].moshaf[0].id);
         setReciters(filteredReciters)
         console.log(filteredReciters)
         // setReciterId(filteredReciters[0].id) // <- whoever is first alphabetically replaces default & becomes new default
