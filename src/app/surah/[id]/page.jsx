@@ -4,7 +4,8 @@ import { useParams } from "next/navigation";
 import Header from "./../../components/Header";
 import Footer from "@/app/components/Footer";
 import { useTheme } from "@/app/context/ThemeContext";
-import { eligibleRecitersIds } from "@/app/data/reciters";
+// import { eligibleRecitersIds } from "@/app/data/reciters";
+import { allRecitersIds } from "@/app/data/reciters2";
 
 export default function SurahPage() {
   const { id } = useParams();
@@ -63,7 +64,7 @@ export default function SurahPage() {
       .then((res) => res.json())
       .then(data => {
         const sortedReciters = sortByName(data.reciters)
-        const ids = eligibleRecitersIds.map(r => r.id);
+        const ids = allRecitersIds.map(r => r.id);
         const filteredReciters = sortedReciters.filter(reciter => ids.includes(reciter.id));
         setReciters(filteredReciters)
         console.log(filteredReciters)
@@ -106,7 +107,7 @@ export default function SurahPage() {
             value={reciterId}
             className="reciterSelect">
             {reciters.map((reciter) => (
-              <option key={reciter.id} value={reciter.id} defaultValue={reciters[0]}>{eligibleRecitersIds.find(r => r.id === reciter.id).displayName}</option>
+              <option key={reciter.id} value={reciter.id} defaultValue={reciters[0]}>{allRecitersIds.find(r => r.id === reciter.id).displayName}</option>
             ))}
           </select>
           <label>📜 Riwaayah</label>
@@ -115,7 +116,7 @@ export default function SurahPage() {
             value={selectedMushaf}
             className="reciterSelect">
             {moshafList.map((riwayah) => (
-              <option key={riwayah.id} value={riwayah.id} defaultValue={riwayah[0]}>{eligibleRecitersIds.find(r => r.id === selectedReciter.id).riwayat[riwayah.id]}</option>
+              <option key={riwayah.id} value={riwayah.id} defaultValue={riwayah[0]}>{allRecitersIds.find(r => r.id === selectedReciter.id).riwayat[riwayah.id]}</option>
             ))}
           </select>
           <audio controls src={audioSrc} className="audioPlayer"></audio>
