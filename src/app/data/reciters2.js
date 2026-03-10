@@ -19,7 +19,7 @@ export const allRecitersIds = [
     // },
     {
         id: 138,
-        displayName: "Noreen Muhammad Siddiq",
+        displayName: "Noreen Muhammad Siddique",
         riwayat: {
             138: "Ad-Doori 'an Abi 'Amr (Murattal)"
         }
@@ -75,35 +75,35 @@ export const allRecitersIds = [
     },
     {
         id: 31,
-        displayName: "Saud Al Shuraim",
+        displayName: "Saud Ash Shuraim",
         riwayat: {
             31: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 46,
-        displayName: "Salah Bukhaatir",
+        displayName: "Salah Bukhatir",
         riwayat: {
             46: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 54,
-        displayName: "AbdulRahman Al Sudais",
+        displayName: "AbdulRahman As Sudais",
         riwayat: {
             54: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 58,
-        displayName: "Abdullah Buayjaan",
+        displayName: "Abdullah Bu'ayjaan",
         riwayat: {
             58: "Hafs 'an 'Asim (Murattal)"
         }
     },
     {
         id: 62,
-        displayName: "Abdullah Johany",
+        displayName: "Abdullah Juhany",
         riwayat: {
             62: "Hafs 'an 'Asim (Murattal)"
         }
@@ -124,7 +124,7 @@ export const allRecitersIds = [
     },
     {
         id: 92,
-        displayName: "Yasser Al Dosari",
+        displayName: "Yasser Al Dosary",
         riwayat: {
             92: "Hafs 'an 'Asim (Murattal)"
         }
