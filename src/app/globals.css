@@ -817,7 +817,10 @@ audio {
   }
 
   .navLinks {
-    display: none;
+    /* display: none; */
+    border: 2px solid red;
+    flex-wrap: wrap;
+    flex-flow:wrap;
   }
 
   .navInner {
@@ -827,6 +830,12 @@ audio {
 
   .navTitle {
     font-size: 16px;
+    display: none;
+  }
+
+  .toggleModeDiv {
+    display: flex;
+    margin-left: auto;
   }
 
   .searchInput {

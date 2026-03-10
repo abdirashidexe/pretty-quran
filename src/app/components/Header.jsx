@@ -28,7 +28,7 @@ export default function Header() {
             />
           </div>
         </div> */}
-        <div>
+        <div className="toggleModeDiv">
           <button onClick={toggleDark} className="toggle-btn">{isDark ? "☀️" : "🌙"}</button>
         </div>
       </div>
