@@ -14,10 +14,16 @@ export default function SurahPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { theme, isDark } = useTheme();
-  const [audioSrc, setAudioSrc] = useState(null);
-  const [reciterId, setReciterId] = useState(1)
-  const [reciters, setReciters] = useState([]);
-  const [selectedMushaf, setSelectedMushaf] = useState(0)
+  const [audioSrc, setAudioSrc] = useState(null)
+  const [reciters, setReciters] = useState([]);;
+  const [reciterId, setReciterId] = useState(() => {
+    if (typeof window === "undefined") return 1;
+    return localStorage.getItem("quran-reciterId") || 1;
+  });
+  const [selectedMushaf, setSelectedMushaf] = useState(() => {
+    if (typeof window === "undefined") return 1;
+    return localStorage.getItem("quran-mushaf") || 0;
+  });
 
   function sortByName(myArray) {
     return myArray.sort((reciter1, reciter2) => reciter1.name.localeCompare(reciter2.name));
@@ -68,8 +74,8 @@ export default function SurahPage() {
         const filteredReciters = sortedReciters.filter(reciter => ids.includes(reciter.id));
         setReciters(filteredReciters)
         console.log(filteredReciters)
-        setReciterId(filteredReciters[0].id) // <- whoever is first alphabetically replaces default & becomes new default
-        setSelectedMushaf(filteredReciters[0].moshaf[0].id)
+        // setReciterId(filteredReciters[0].id) // <- whoever is first alphabetically replaces default & becomes new default
+        // setSelectedMushaf(filteredReciters[0].moshaf[0].id)
       })
       .catch(() => setError("Failed to load reciters"));
   }, []);
@@ -101,6 +107,7 @@ export default function SurahPage() {
           <label>🎙️ Reciter</label>
           <select onChange={(e) => {
             setReciterId(e.target.value);
+            localStorage.setItem("quran-reciterId", e.target.value);
             const newReciterSelected = reciters.find(reciter => reciter.id === Number(e.target.value));
             setSelectedMushaf(newReciterSelected.moshaf[0].id);
           }}
@@ -111,8 +118,10 @@ export default function SurahPage() {
             ))}
           </select>
           <label>📜 Riwaayah</label>
-          <select onChange={(e) =>
-            setSelectedMushaf(e.target.value)}
+          <select onChange={(e) => {
+            setSelectedMushaf(e.target.value)
+            localStorage.setItem("quran-mushaf", e.target.value);
+          }}
             value={selectedMushaf}
             className="reciterSelect">
             {moshafList.map((riwayah) => (
