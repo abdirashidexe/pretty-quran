@@ -1,12 +1,12 @@
 export const eligibleRecitersIds = [
-    // {
-    //     id: 50,
-    //     displayName: "AbdulBari Muhammad",
-    //     riwayat: {
-    //         169: "(Mu'allim)",
-    //         50: "Hafs 'an 'Asim (Murattal)"
-    //     }
-    // },
+    {
+        id: 50,
+        displayName: "AbdulBari Muhammad",
+        riwayat: {
+            169: "(Mu'allim)",
+            50: "Hafs 'an 'Asim (Murattal)"
+        }
+    },
     {
         id: 51,
         displayName: "AbdulBasit AbdulSamad",
@@ -16,14 +16,14 @@ export const eligibleRecitersIds = [
             51: "(Mujawwad)"
         }
     },
-    // {
-    //     id: 243,
-    //     displayName: "Abdullah Al Musa",
-    //     riwayat: {
-    //         286: "(Mu'allim)",
-    //         243: "Hafs 'an 'Asim (Murattal)"
-    //     }
-    // },
+    {
+        id: 243,
+        displayName: "Abdullah Al Musa",
+        riwayat: {
+            286: "(Mu'allim)",
+            243: "Hafs 'an 'Asim (Murattal)"
+        }
+    },
     {
         id: 64,
         displayName: "AbdulRashid Ali Sufi",
@@ -37,29 +37,29 @@ export const eligibleRecitersIds = [
         id: 265,
         displayName: "Ahmad Diibaan",
         riwayat: {
-            // 313: "Ibn Jammaz A'n Abi Ja'far - Murattal",
-            // 312: "Hesham A'n Abi A'mer - Murattal",
+            313: "Ibn Jummaz 'an Abu Ja'far (Murattal)",
+            312: "Hisham 'an Ibn 'Aamir (Murattal)",
             311: "Khalaf 'an Hamzah (Murattal)",
             310: "Ad-Doori ‘an Al-Kisa'i (Murattal)",
             309: "As-Soosi 'an Abi 'Amr (Murattal)",
-            // 308: "Ibn Thakwan A'n Ibn Amer - Murattal",
-            301: "Warsh 'an Nafi' (Murattal) Men Tariq Alazraq",
+            308: "Ibn Dhakwan 'an Ibn 'Amir (Murattal)",
+            // 301: "Warsh 'an Nafi' (Murattal) Men Tariq Alazraq",
             285: "Ad-Doori 'an Abi 'Amr (Murattal)",
             280: "Qaloon 'an 'Nafi (Murattal)",
-            279: "Al-Bazzi 'an Ibn Katheer (Murattal)",
-            // 278: "Rewayat Qunbol A'n Ibn Katheer - Murattal",
+            279: "Al-Bazzi 'an Ibn Kathir (Murattal)",
+            278: "Qunbul 'an Ibn Kathir (Murattal)",
             276: "Shu'bah 'an 'Asim (Murattal)",
             265: "Hafs 'an 'Asim (Murattal)"
         }
     },
-    // {
-    //     id: 278,
-    //     displayName: "Ahmad Isa Al Ma'saraawi",
-    //     riwayat: {
-    //         // 290: "Rewayat Rowis and Rawh A'n Yakoob Al Hadrami  - Murattal",
-    //         289: "Hafs 'an 'Asim (Murattal)"
-    //     }
-    // },
+    {
+        id: 278,
+        displayName: "Ahmad Isa Al Ma'saraawi",
+        riwayat: {
+            // 290: "Rewayat Rowis and Rawh A'n Yakoob Al Hadrami  - Murattal",
+            289: "Hafs 'an 'Asim (Murattal)"
+        }
+    },
     {
         id: 201,
         displayName: "Ahmad Al Tarabulsi",
@@ -85,23 +85,23 @@ export const eligibleRecitersIds = [
             178: "Warsh 'an Nafi' (Murattal)"
         }
     },
-    // {
-    //     id: 102,
-    //     displayName: "Mahir Al Mu'aiqly",
-    //     riwayat: {
-    //         133: "(Mujawwad)",
-    //         103: "(Mu'allim)",
-    //         102: "Hafs 'an 'Asim (Murattal)"
-    //     }
-    // },
-    // {
-    //     id:  121,
-    //     displayName: "Mahmoud Ali Al Banna",
-    //     riwayat: {
-    //         122: "(Mujawwad)",
-    //         121: "Hafs 'an 'Asim (Murattal)"
-    //     }
-    // },
+    {
+        id: 102,
+        displayName: "Mahir Al Mu'aiqly",
+        riwayat: {
+            133: "(Mujawwad)",
+            103: "(Mu'allim)",
+            102: "Hafs 'an 'Asim (Murattal)"
+        }
+    },
+    {
+        id:  121,
+        displayName: "Mahmoud Ali Al Banna",
+        riwayat: {
+            122: "(Mujawwad)",
+            121: "Hafs 'an 'Asim (Murattal)"
+        }
+    },
     {
         id: 118,
         displayName: "Mahmoud Khalil Al Hussary",
@@ -121,66 +121,66 @@ export const eligibleRecitersIds = [
             123: "Hafs 'an 'Asim (Murattal)"
         }
     },
-    // {
-    //     id: 115,
-    //     displayName: "Muhammad AbdulKariim",
-    //     riwayat: {
-    //         // 210: "Warsh 'an Nafi' (Murattal) Men  Tariq Abi Baker Alasbahani",
-    //         115: "Hafs 'an 'Asim (Murattal)"
-    //     }
-    // },
-    // {
-    //     id: 116, 
-    //     displayName: "Muhammad Al Abdullah",
-    //     riwayat: {
-    //         117: "Ad-Doori ‘an Al-Kisa'i (Murattal)",
-    //         // 116: "Al-Bazzi 'an Ibn Katheer and Qunbol A'n Ibn Katheer - Murattal"
-    //     }
-    // },
-    // {
-    //     id: 106, 
-    //     displayName: "Muhammad Al Tablaawi",
-    //     riwayat: {
-    //         10912: "(Mujawwad)",
-    //         106: "Hafs 'an 'Asim (Murattal)"
-    //     }
-    // },
-    // {
-    //     id: 109, 
-    //     displayName: "Muhammad Ayyub",
-    //     riwayat: {
-    //         // 320: "Rewayat Hafs A'n Assem - 4",
-    //         109: "Hafs 'an 'Asim (Murattal)"
-    //     }
-    // },
-    // {
-    //     id: 112, 
-    //     displayName: "Muhmmad Siddiq Al Minshaawi",
-    //     riwayat: {
-    //         114: "(Mu'allim)",
-    //         113: "(Mujawwad)",
-    //         112: "Hafs 'an 'Asim (Murattal)"
-    //     }
-    // },
+    {
+        id: 115,
+        displayName: "Muhammad AbdulKariim",
+        riwayat: {
+            // 210: "Warsh 'an Nafi' (Murattal) Men  Tariq Abi Baker Alasbahani",
+            115: "Hafs 'an 'Asim (Murattal)"
+        }
+    },
+    {
+        id: 116, 
+        displayName: "Muhammad Al Abdullah",
+        riwayat: {
+            117: "Ad-Doori ‘an Al-Kisa'i (Murattal)",
+            // 116: "Al-Bazzi 'an Ibn Katheer and Qunbol A'n Ibn Katheer - Murattal"
+        }
+    },
+    {
+        id: 106, 
+        displayName: "Muhammad Al Tablaawi",
+        riwayat: {
+            10912: "(Mujawwad)",
+            106: "Hafs 'an 'Asim (Murattal)"
+        }
+    },
+    {
+        id: 109, 
+        displayName: "Muhammad Ayyub",
+        riwayat: {
+            // 320: "Rewayat Hafs A'n Assem - 4",
+            109: "Hafs 'an 'Asim (Murattal)"
+        }
+    },
+    {
+        id: 112, 
+        displayName: "Muhmmad Siddiq Al Minshaawi",
+        riwayat: {
+            114: "(Mu'allim)",
+            113: "(Mujawwad)",
+            112: "Hafs 'an 'Asim (Murattal)"
+        }
+    },
     {
         id: 129, 
         displayName: "Muftaah Al Saltaani",
         riwayat: {
-            // 196: "Ibn Thakwan A'n Ibn Amer - Murattal",
+            196: "Ibn Dhakwan 'an Ibn 'Amir (Murattal)",
             195: "Shu'bah 'an 'Asim (Murattal)",
             182: "Hafs 'an 'Asim (Murattal)",
             180: "Ad-Doori ‘an Al-Kisa'i (Murattal)",
             129: "Ad-Doori 'an Abi 'Amr (Murattal)"
         }
     },
-    // {
-    //     id: 125, 
-    //     displayName: "Mustafa Ismail",
-    //     riwayat: {
-    //         288: "(Mujawwad)",
-    //         125: "Hafs 'an 'Asim (Murattal)"
-    //     }
-    // },
+    {
+        id: 125, 
+        displayName: "Mustafa Ismail",
+        riwayat: {
+            288: "(Mujawwad)",
+            125: "Hafs 'an 'Asim (Murattal)"
+        }
+    },
     {
         id: 272, 
         displayName: "Okasha Kameni",
