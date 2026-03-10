@@ -120,7 +120,7 @@ export default function SurahPage() {
           </select>
           <audio controls src={audioSrc} className="audioPlayer"></audio>
         </section>
-        <section className="section">
+        {/* <section className="section">
           <h2 className="sectionTitle">Verses</h2>
           <div className="versesList">
             {verses.map((verse) => (
@@ -133,6 +133,14 @@ export default function SurahPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </section> */}
+        <section className="section">
+          <h2 className="sectionTitle">Verses</h2>
+          <div className="comingSoon">
+            <span className="comingSoonIcon">📖</span>
+            <h3 className="comingSoonTitle">Verses coming soon</h3>
+            <p className="comingSoonText">You will be able to follow with the Qur'an in sha Allah.</p>
           </div>
         </section>
       </main>

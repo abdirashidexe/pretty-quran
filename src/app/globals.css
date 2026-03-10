@@ -42,7 +42,9 @@ body {
   font-size: clamp(13px, 2vw, 16px);
   color: var(--text-secondary);
   letter-spacing: 0.12em;
-  text-transform: uppercase;
+  text-transform: lowercase;
+  font-weight: 600;
+  font-size: 18px;
   margin: 0 0 48px;
   font-style: italic;
   text-align: center;

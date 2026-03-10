@@ -19,7 +19,7 @@ export default function Header() {
           <li><Link href="/bookmarks" className="navLink">Bookmarks</Link></li>
           <li><Link href="/settings" className="navLink">Settings</Link></li>
         </ul>
-        <div className="navActions">
+        {/* <div className="navActions">
           <div className="navSearch">
             <input
               type="text"
@@ -27,7 +27,7 @@ export default function Header() {
               className="searchInput"
             />
           </div>
-        </div>
+        </div> */}
         <div>
           <button onClick={toggleDark} className="toggle-btn">{isDark ? "☀️" : "🌙"}</button>
         </div>
