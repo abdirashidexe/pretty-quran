@@ -48,6 +48,29 @@ body {
   text-align: center;
 }
 
+.section2 {
+  width: 50%;
+  /* margin: 0 auto; */
+  margin-left: 150px;
+}
+
+.side-by-side {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.side-by-side section {
+  /* border: 2px solid red; */
+}
+
+.rpv-default-layout__container {
+  border: none !important;
+}
+
+
 /* ─── Page ──────────────────────────────────────────── */
 .page {
   min-height: 100vh;

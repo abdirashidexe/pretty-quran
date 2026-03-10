@@ -5,6 +5,13 @@ import Header from "./../../components/Header";
 import Footer from "@/app/components/Footer";
 import { useTheme } from "@/app/context/ThemeContext";
 import { eligibleRecitersIds } from "@/app/data/reciters";
+// import { Document, Page, pdfjs } from 'react-pdf';
+
+// pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+
+import dynamic from 'next/dynamic';
+
+const PdfViewer = dynamic(() => import('@/app/components/PdfViewer'), { ssr: false });
 
 export default function SurahPage() {
   const { id } = useParams();
@@ -17,6 +24,9 @@ export default function SurahPage() {
   const [reciterId, setReciterId] = useState(1)
   const [reciters, setReciters] = useState([]);
   const [selectedMushaf, setSelectedMushaf] = useState(0)
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
 
   function sortByName(myArray) {
     return myArray.sort((reciter1, reciter2) => reciter1.name.localeCompare(reciter2.name));
@@ -95,6 +105,7 @@ export default function SurahPage() {
             <span>Surah {surah.id}</span>
           </div>
         </section>
+        <div className="side-by-side">
         <section className="section" id="audio-section">
           <h2 className="sectionTitle">Audio</h2>
           <label>🎙️ Reciter</label>
@@ -120,7 +131,26 @@ export default function SurahPage() {
           </select>
           <audio controls src={audioSrc} className="audioPlayer"></audio>
         </section>
-        <section className="section">
+        <section className="section2">
+          {/* <Document file="https://upload.wikimedia.org/wikipedia/commons/8/8b/%D8%A7%D9%84%D9%85%D8%B5%D8%AD%D9%81_%D8%A8%D8%B1%D9%88%D8%A7%D9%8A%D8%A9_%D8%A7%D9%84%D8%B3%D9%88%D8%B3%D9%8A_%D8%B9%D9%86_%D8%A3%D8%A8%D9%8A_%D8%B9%D9%85%D8%B1%D9%88.pdf" onLoadSuccess={({ numPages }) => setNumPages(numPages)}>
+            <div style={{ overflow: "hidden", width: "700px", height: "700px" }}>
+  <div style={{ transform: "scale(1.5) translate(5%, 5%)", transformOrigin: "center" }}>
+    <Page
+      pageNumber={pageNumber}
+      width={600}
+      renderTextLayer={false}
+      renderAnnotationLayer={false}
+    />
+  </div>
+</div>          </Document>
+          <p>Page {pageNumber} of {numPages}</p>
+          <button onClick={() => setPageNumber(p => p - 1)}>Prev</button>
+          <button onClick={() => setPageNumber(p => p + 1)}>Next</button> */}
+          <h2>Mushaf: As-Soosi 'an Abi Amr</h2>
+        <PdfViewer fileUrl="https://upload.wikimedia.org/wikipedia/commons/8/8b/%D8%A7%D9%84%D9%85%D8%B5%D8%AD%D9%81_%D8%A8%D8%B1%D9%88%D8%A7%D9%8A%D8%A9_%D8%A7%D9%84%D8%B3%D9%88%D8%B3%D9%8A_%D8%B9%D9%86_%D8%A3%D8%A8%D9%8A_%D8%B9%D9%85%D8%B1%D9%88.pdf" />
+        </section>
+        </div>
+        {/* <section className="section">
           <h2 className="sectionTitle">Verses</h2>
           <div className="versesList">
             {verses.map((verse) => (
@@ -134,7 +164,7 @@ export default function SurahPage() {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
       </main>
       <Footer />
     </div>
