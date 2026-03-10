@@ -9,7 +9,7 @@ export default function Header() {
     <nav className="navbar">
       <div className="navInner">
         <div className="navBrand">
-          <span className="navLogo">✧</span>
+          <a className="navLogo" href="https://www.qirayah.com">✧</a>
           <span className="navTitle">Qirayah</span>
         </div>
         <ul className="navLinks">

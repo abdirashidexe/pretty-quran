@@ -1,8 +1,21 @@
 /* ─── Reset & Base ─────────────────────────────────── */
-body {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%; /* prevents iOS auto font-size inflation */
+}
+
+body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  overflow-x: hidden;
   background-color: #0d1117;
 }
 
@@ -34,8 +47,8 @@ body {
   margin: 0 0 12px;
   line-height: 1;
   text-align: center;
-  color: var(--text-primary); /* adapts to dark/light automatically */
-  filter: drop-shadow(0 0 40px rgba(201, 168, 76, 0.15)); /* subtle gold glow */
+  color: var(--text-primary);
+  filter: drop-shadow(0 0 40px rgba(201, 168, 76, 0.15));
 }
 
 .hero-subtext {
@@ -53,12 +66,14 @@ body {
 /* ─── Page ──────────────────────────────────────────── */
 .page {
   min-height: 100vh;
+  width: 100%;
   background: var(--bg);
   color: var(--text-primary);
   font-family: "Inter", system-ui, sans-serif;
   display: flex;
   flex-direction: column;
   transition: var(--transition);
+  overflow-x: hidden;
 }
 
 /* ─── Navbar ─────────────────────────────────────────── */
@@ -71,16 +86,17 @@ body {
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   transition: var(--transition);
+  width: 100%;
 }
 
 .navInner {
   max-width: 1200px;
   margin: 0 auto;
   height: 100%;
-  padding: 0 24px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
 }
 
 .navBrand {
@@ -94,6 +110,11 @@ body {
 .navLogo {
   font-size: 22px;
   color: var(--accent);
+  text-decoration: none;
+}
+
+.navLogo:hover {
+  cursor: pointer;
 }
 
 .navTitle {
@@ -108,6 +129,8 @@ body {
   list-style: none;
   gap: 4px;
   flex: 1;
+  margin: 0;
+  padding: 0;
 }
 
 .navLink {
@@ -131,6 +154,7 @@ body {
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .navSearch {
@@ -216,7 +240,7 @@ body {
   flex: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 48px 24px 64px;
+  padding: 48px 16px 64px;
   width: 100%;
 }
 
@@ -249,40 +273,39 @@ body {
 
 /* ─── Button ─────────────────────────────────────────── */
 .btn {
-    display: inline-block;
-    padding: 10px 24px;
-    background: var(--accent);
-    color: #0d1117;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: opacity 0.2s, transform 0.15s;
+  display: inline-block;
+  padding: 10px 24px;
+  background: var(--accent);
+  color: #0d1117;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
 }
 
 .btn:hover {
-    opacity: 0.85;
-    transform: translateY(-1px);
+  opacity: 0.85;
+  transform: translateY(-1px);
 }
 
 .toggle-btn {
-    display: inline-block;
-    padding: 8px 14px;
-    background: #0d1117;
-    color: #0d1117;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 999px;
-    border: 2px solid var(--border);
-    text-decoration: none;
-    transition: opacity 0.2s, transform 0.15s;
+  display: inline-block;
+  padding: 8px 14px;
+  background: #0d1117;
+  color: #0d1117;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
 }
 
 .toggle-btn:hover {
-    opacity: 0.85;
-    transform: translateY(-1px);
+  opacity: 0.85;
+  transform: translateY(-1px);
 }
-
 
 /* ─── Section ─────────────────────────────────────────── */
 .section {
@@ -301,7 +324,7 @@ body {
 /* ─── Surah Grid ──────────────────────────────────────── */
 .surahGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
 }
 
@@ -316,6 +339,7 @@ body {
   text-decoration: none;
   color: inherit;
   transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  min-width: 0; /* prevents flex children from overflowing */
 }
 
 .surahCard:hover {
@@ -341,7 +365,7 @@ body {
 
 .surahInfo {
   flex: 1;
-  min-width: 0;
+  min-width: 0; /* allows text truncation inside flex */
 }
 
 .surahName {
@@ -349,6 +373,9 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .surahMeaning {
@@ -379,6 +406,7 @@ body {
 
 .surahMeta {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
   font-size: 13px;
@@ -408,6 +436,7 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+  min-width: 0;
 }
 
 .verseNumber {
@@ -432,202 +461,203 @@ body {
   direction: rtl;
   text-align: right;
   color: var(--text-primary);
+  word-break: break-word;
+  min-width: 0;
+  flex: 1;
 }
 
 /* ─── Juz Card ───────────────────────────────────────── */
 .juzCard {
-    align-items: flex-start; /* override surahCard center align so tags wrap nicely */
+  align-items: flex-start;
 }
 
 .juzSurahList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
 }
 
 .juzSurahTag {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: var(--accent-soft);
-    border: 1px solid rgba(201, 168, 76, 0.2);
-    border-radius: 999px;
-    padding: 2px 10px;
-    font-size: 11px;
-    color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 11px;
+  color: var(--text-secondary);
 }
 
 .juzVerseRange {
-    color: var(--text-muted);
-    font-size: 10px;
+  color: var(--text-muted);
+  font-size: 10px;
 }
 
 /* ─── Coming Soon ────────────────────────────────────── */
 .comingSoon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 24px;
-    border: 2px dashed var(--border);
-    border-radius: var(--radius);
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  gap: 12px;
 }
 
 .comingSoonIcon {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 .comingSoonTitle {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .comingSoonText {
-    font-size: 14px;
-    color: var(--text-muted);
-    max-width: 340px;
-    line-height: 1.6;
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 340px;
+  line-height: 1.6;
 }
 
 /* ─── Popular Surahs Grid (2x2) ─────────────────────── */
 .popularGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-}
-
-@media (max-width: 600px) {
-    .popularGrid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ─── Almost Black ───────────────────────────────────── */
-.theme-black {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --surface2: #1a1a1a;
-    --border: #222222;
-    --accent: #c9a84c;
-    --accent-soft: rgba(201, 168, 76, 0.12);
-    --text-primary: #e8eaf0;
-    --text-secondary: #8b96b0;
-    --text-muted: #525d75;
-    --nav-bg: rgba(10, 10, 10, 0.85);
-}
-
-/* ─── Pink ───────────────────────────────────────────── */
-.theme-pink {
-    --bg: #1a0d14;
-    --surface: #2a1020;
-    --surface2: #35182a;
-    --border: #4a2040;
-    --accent: #e87fa0;
-    --accent-soft: rgba(232, 127, 160, 0.12);
-    --text-primary: #f5e6ec;
-    --text-secondary: #c4a0b0;
-    --text-muted: #7a5068;
-    --nav-bg: rgba(26, 13, 20, 0.85);
-}
-
-/* ─── Baby Blue ───────────────────────────────────────────── */
-.theme-baby-blue {
-    --bg: #0d121a; /* Dark blue-black */
-    --surface: #101a2a; /* Dark blue surface */
-    --surface2: #182535; /* Slightly lighter blue */
-    --border: #20354a; /* Medium blue border */
-    --accent: #87ceeb; /* Baby blue accent */
-    --accent-soft: rgba(135, 206, 235, 0.12); /* Soft blue accent */
-    --text-primary: #e6f0f5; /* Off-white text */
-    --text-secondary: #a0bcc4; /* Muted blue text */
-    --text-muted: #50687a; /* Darker muted text */
-    --nav-bg: rgba(13, 18, 26, 0.85); /* Dark blue nav */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 /* ─── Settings ───────────────────────────────────────── */
 .settingsGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .settingsLabel {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 .themeOptions {
-    display: flex;
-    gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .themeOption {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 16px 24px;
-    background: var(--surface);
-    border: 2px solid var(--border);
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: border-color 0.2s, transform 0.15s;
-    position: relative;
-    min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+  position: relative;
+  min-width: 100px;
+  flex: 1 1 100px;
 }
 
 .themeOption:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .themeOptionActive {
-    border-color: var(--accent);
+  border-color: var(--accent);
 }
 
 .themeSwatches {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 4px;
 }
 
 .themeSwatch {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .themeOptionLabel {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
 .themeOptionCheck {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    font-size: 12px;
-    color: var(--accent);
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 12px;
+  color: var(--accent);
 }
 
-/* ─── Midnight (default) ─────────────────────────────── */
+/* ─── Theme Variants ─────────────────────────────────── */
+
+/* Midnight (default) */
 .theme-default {
-    --bg: #0d1117;
-    --surface: #161b27;
-    --surface2: #1e2636;
-    --border: #2a3348;
-    --accent: #c9a84c;
-    --accent-soft: rgba(201, 168, 76, 0.12);
-    --text-primary: #e8eaf0;
-    --text-secondary: #8b96b0;
-    --text-muted: #525d75;
-    --nav-bg: rgba(13, 17, 23, 0.85);
+  --bg: #0d1117;
+  --surface: #161b27;
+  --surface2: #1e2636;
+  --border: #2a3348;
+  --accent: #c9a84c;
+  --accent-soft: rgba(201, 168, 76, 0.12);
+  --text-primary: #e8eaf0;
+  --text-secondary: #8b96b0;
+  --text-muted: #525d75;
+  --nav-bg: rgba(13, 17, 23, 0.85);
+}
+
+/* Almost Black */
+.theme-black {
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --surface2: #1a1a1a;
+  --border: #222222;
+  --accent: #c9a84c;
+  --accent-soft: rgba(201, 168, 76, 0.12);
+  --text-primary: #e8eaf0;
+  --text-secondary: #8b96b0;
+  --text-muted: #525d75;
+  --nav-bg: rgba(10, 10, 10, 0.85);
+}
+
+/* Pink */
+.theme-pink {
+  --bg: #1a0d14;
+  --surface: #2a1020;
+  --surface2: #35182a;
+  --border: #4a2040;
+  --accent: #e87fa0;
+  --accent-soft: rgba(232, 127, 160, 0.12);
+  --text-primary: #f5e6ec;
+  --text-secondary: #c4a0b0;
+  --text-muted: #7a5068;
+  --nav-bg: rgba(26, 13, 20, 0.85);
+}
+
+/* Baby Blue */
+.theme-baby-blue {
+  --bg: #0d121a;
+  --surface: #101a2a;
+  --surface2: #182535;
+  --border: #20354a;
+  --accent: #87ceeb;
+  --accent-soft: rgba(135, 206, 235, 0.12);
+  --text-primary: #e6f0f5;
+  --text-secondary: #a0bcc4;
+  --text-muted: #50687a;
+  --nav-bg: rgba(13, 18, 26, 0.85);
 }
 
 /* ─── Light Mode Overrides ──────────────────────────── */
@@ -645,47 +675,45 @@ body {
   --hero-gradient: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(160, 120, 40, 0.07), transparent 70%);
 }
 
-/* ─── Almost Black — Light ───────────────────────────── */
 .theme-black.light {
-    --bg: #e8e8e8;
-    --surface: #f5f5f5;
-    --surface2: #dcdcdc;
-    --border: #c0c0c0;
-    --accent: #a07828;
-    --accent-soft: rgba(160, 120, 40, 0.1);
-    --text-primary: #1a1a1a;
-    --text-secondary: #444444;
-    --text-muted: #888888;
-    --nav-bg: rgba(232, 232, 232, 0.88);
+  --bg: #e8e8e8;
+  --surface: #f5f5f5;
+  --surface2: #dcdcdc;
+  --border: #c0c0c0;
+  --accent: #a07828;
+  --accent-soft: rgba(160, 120, 40, 0.1);
+  --text-primary: #1a1a1a;
+  --text-secondary: #444444;
+  --text-muted: #888888;
+  --nav-bg: rgba(232, 232, 232, 0.88);
 }
 
-/* ─── Pink — Light ───────────────────────────────────── */
 .theme-pink.light {
-    --bg: #fdf0f5;
-    --surface: #ffffff;
-    --surface2: #fce4ee;
-    --border: #f0b8ce;
-    --accent: #c0446a;
-    --accent-soft: rgba(192, 68, 106, 0.1);
-    --text-primary: #2a0a14;
-    --text-secondary: #7a3050;
-    --text-muted: #b07090;
-    --nav-bg: rgba(253, 240, 245, 0.88);
+  --bg: #fdf0f5;
+  --surface: #ffffff;
+  --surface2: #fce4ee;
+  --border: #f0b8ce;
+  --accent: #c0446a;
+  --accent-soft: rgba(192, 68, 106, 0.1);
+  --text-primary: #2a0a14;
+  --text-secondary: #7a3050;
+  --text-muted: #b07090;
+  --nav-bg: rgba(253, 240, 245, 0.88);
 }
 
-/* ─── Baby Blue — Light ──────────────────────────────── */
 .theme-baby-blue.light {
-    --bg: #eef6fb;
-    --surface: #ffffff;
-    --surface2: #daeef8;
-    --border: #b0d8ec;
-    --accent: #2a7fa0;
-    --accent-soft: rgba(42, 127, 160, 0.1);
-    --text-primary: #0a1e2a;
-    --text-secondary: #2a5068;
-    --text-muted: #6a9ab0;
-    --nav-bg: rgba(238, 246, 251, 0.88);
+  --bg: #eef6fb;
+  --surface: #ffffff;
+  --surface2: #daeef8;
+  --border: #b0d8ec;
+  --accent: #2a7fa0;
+  --accent-soft: rgba(42, 127, 160, 0.1);
+  --text-primary: #0a1e2a;
+  --text-secondary: #2a5068;
+  --text-muted: #6a9ab0;
+  --nav-bg: rgba(238, 246, 251, 0.88);
 }
+
 
 /* ─── Audio Section ──────────────────────────────────── */
 .audioSection {
@@ -772,7 +800,7 @@ audio {
 /* ─── Footer ─────────────────────────────────────────── */
 .footer {
   text-align: center;
-  padding: 24px;
+  padding: 24px 16px;
   border-top: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 13px;
@@ -780,19 +808,118 @@ audio {
 
 /* ─── Responsive ─────────────────────────────────────── */
 @media (max-width: 768px) {
+  :root {
+    --nav-height: 56px;
+  }
+
   .navLinks {
     display: none;
   }
 
+  .navInner {
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .navTitle {
+    font-size: 16px;
+  }
+
   .searchInput {
-    width: 140px;
+    width: 120px;
+    padding: 7px 12px;
   }
 
   .searchInput:focus {
-    width: 170px;
+    width: 150px;
+  }
+
+  .main {
+    padding: 24px 12px 48px;
+  }
+
+  .hero {
+    padding: 36px 16px 32px;
+    margin-bottom: 32px;
+    border-radius: var(--radius-sm);
+  }
+
+  .hero-subtext {
+    font-size: 15px;
+    margin-bottom: 32px;
   }
 
   .surahGrid {
     grid-template-columns: 1fr;
+  }
+
+  .popularGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .surahCard {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .verseCard {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .verseArabic {
+    font-size: 22px;
+  }
+
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .sectionTitle {
+    font-size: 17px;
+  }
+
+  .audioSection {
+    padding: 16px;
+    margin-bottom: 32px;
+  }
+
+  .comingSoon {
+    padding: 56px 16px;
+  }
+
+  .themeOptions {
+    gap: 8px;
+  }
+
+  .themeOption {
+    padding: 12px 16px;
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navTitle {
+    display: none; /* hide brand text, keep icon only on very small screens */
+  }
+
+  .searchInput {
+    width: 100px;
+  }
+
+  .searchInput:focus {
+    width: 130px;
+  }
+
+  .surahArabic {
+    font-size: 18px;
+  }
+
+  .verseArabic {
+    font-size: 20px;
+  }
+
+  .hero-textlogo {
+    font-size: clamp(42px, 14vw, 80px);
   }
 }
