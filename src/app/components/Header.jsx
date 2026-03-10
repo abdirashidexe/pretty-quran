@@ -10,7 +10,7 @@ export default function Header() {
       <div className="navInner">
         <div className="navBrand">
           <a className="navLogo" href="https://www.qirayah.com">✧</a>
-          <span className="navTitle">Qirayah</span>
+          <a className="navTitle" href="https://www.qirayah.com">Qirayah</a>
         </div>
         <ul className="navLinks">
           <li><Link href="/" className="navLink">Home</Link></li>

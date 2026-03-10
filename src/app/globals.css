@@ -899,8 +899,13 @@ audio {
 }
 
 @media (max-width: 480px) {
-  .navTitle {
+  /* .navTitle {
     display: none; /* hide brand text, keep icon only on very small screens */
+  /*} */
+  
+  .navTitle {
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .searchInput {
