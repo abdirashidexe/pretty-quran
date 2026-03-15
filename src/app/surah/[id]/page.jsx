@@ -86,7 +86,9 @@ export default function SurahPage() {
   }, []);
 
   const selectedReciter = reciters.find(reciter => reciter.id === Number(reciterId))
-  const moshafList = selectedReciter ? selectedReciter.moshaf : [];
+  const rawMoshafList = selectedReciter ? selectedReciter.moshaf : [];
+  const reciterData = allRecitersIds.find(reciter => reciter.id === selectedReciter?.id);
+  const moshafList = rawMoshafList.filter(riwayah => reciterData?.riwayat[riwayah.id])
 
   if (loading) return <div className="state">Loading...</div>;
   if (error) return <div className="state">{error}</div>;

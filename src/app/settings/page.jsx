@@ -1,4 +1,5 @@
 "use client";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useTheme } from "../context/ThemeContext";
 
@@ -51,6 +52,7 @@ export default function Settings() {
                     </div>
                 </section>
             </main>
+            <Footer />
         </div>
     );
 }

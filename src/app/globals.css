@@ -170,6 +170,22 @@ body {
   background: var(--surface2);
 }
 
+/* IG */
+.ig {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s, background 0.2s;
+}
+
+.ig:hover {
+  color: var(--text-primary);
+  /* background: var(--surface2); */
+}
+
 /* ─── Nav Actions (search + toggle) ─────────────────── */
 .navActions {
   display: flex;

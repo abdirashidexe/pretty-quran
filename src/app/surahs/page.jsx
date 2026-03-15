@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import AllSurahs from "../components/AllSurahs";
 import Header from "../components/Header";
 import { useTheme } from "../context/ThemeContext";
+import Footer from "../components/Footer";
 
 export default function AllSurahsPage() {
   const [surahs, setSurahs] = useState([]);
@@ -24,6 +25,7 @@ export default function AllSurahsPage() {
       <div className={`page ${theme} ${isDark ? "" : "light"}`}>
         <Header />
         <AllSurahs surahs={surahs} loading={loading} />
+        <Footer />
       </div>
     </>
   )

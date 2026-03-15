@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import AllJuzs from "../components/AllJuzs";
 import Header from "../components/Header";
 import { useTheme } from "../context/ThemeContext";
+import Footer from "../components/Footer";
 
 export default function AllJuzPage() {
     const [juzs, setJuzs] = useState([]);
@@ -39,6 +40,7 @@ export default function AllJuzPage() {
         <div className={`page ${theme} ${isDark ? "" : "light"}`}>
             <Header />
             <AllJuzs juzs={juzs} surahs={surahs} loading={loading} />
+            <Footer />
         </div>
     )
 }
