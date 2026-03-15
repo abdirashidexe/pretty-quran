@@ -16,7 +16,7 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  background-color: #0d1117;
+  background-color: #0a0a0a;
 }
 
 /* ─── Dark Mode Variables (default) ────────────────── */
@@ -52,15 +52,33 @@ body {
 }
 
 .hero-subtext {
-  font-size: clamp(13px, 2vw, 16px);
+  font-size: 15pt;
   color: var(--text-secondary);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.2em;
   text-transform: lowercase;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: 18px;
   margin: 0 0 48px;
   font-style: italic;
   text-align: center;
+}
+
+#all-surahs-btn {
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  margin: 0 auto;
+  background: var(--surface);
+  color: var(--text-primary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+#all-surahs-btn:hover {
+  border-color: var(--accent);
+  background: var(--surface2);
+  transform: translateY(-2px);
 }
 
 /* ─── Page ──────────────────────────────────────────── */

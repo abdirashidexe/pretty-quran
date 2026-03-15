@@ -8,7 +8,7 @@ export default function MainContent() {
     <main className="main">
       <MainHero />
       <MainPopularSurahs />
-      <Link href="/surahs" className="btn">Go to All Surahs</Link>
+      <Link href="/surahs" className="btn" id="all-surahs-btn">Go to All Surahs</Link>
     </main>
   );
 }
