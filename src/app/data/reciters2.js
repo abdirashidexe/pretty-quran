@@ -1,5 +1,12 @@
 export const allRecitersIds = [
     {
+        id: 9999,
+        displayName: "Fatih Seferagic",
+        riwayat: {
+            9999: "Hafs 'an 'Asim"
+        }
+    },
+    {
         id: 107,
         displayName: "Muhammad Al Luhaidan",
         riwayat: {

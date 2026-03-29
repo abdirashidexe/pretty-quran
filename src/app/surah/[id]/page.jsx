@@ -55,7 +55,7 @@ export default function SurahPage() {
     const selectedReciter = reciters.find((reciter) => reciter.id === Number(reciterId)); // <- find the reciter the user picked from the reciters array already in state
     if (!selectedReciter) return;
 
-    const userSelectedMushaf = selectedReciter.moshaf.find((mushaf) => mushaf.id === Number(selectedMushaf));
+    const userSelectedMushaf = selectedReciter.moshaf.find((mushaf) => mushaf.id === Number(selectedMushaf) || selectedReciter.moshaf[0]);
     if (!userSelectedMushaf) return;
 
     const serverUrl = userSelectedMushaf.server; // <- grab reciters server URL from mp3quran.net API link
@@ -77,7 +77,16 @@ export default function SurahPage() {
 
         if (!savedReciter) setReciterId(filteredReciters[0].id);
         if (!savedMushaf) setSelectedMushaf(filteredReciters[0].moshaf[0].id);
-        setReciters(filteredReciters)
+        // setReciters(filteredReciters)
+        const fatih = {
+          id: 9999,
+          name: "Fatih Seferagic",
+          moshaf: [{
+            id: 9999,
+            server: "https://download.quranicaudio.com/quran/fatih_seferagic/"
+          }]
+        };
+        setReciters(sortByName([...filteredReciters, fatih]));
         console.log(filteredReciters)
         // setReciterId(filteredReciters[0].id) // <- whoever is first alphabetically replaces default & becomes new default
         // setSelectedMushaf(filteredReciters[0].moshaf[0].id)
