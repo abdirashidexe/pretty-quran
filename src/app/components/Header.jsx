@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useTheme } from "./../context/ThemeContext"
+import MobileNav from "./MobileNav";
 
 export default function Header() {
   const { isDark, toggleDark } = useTheme();
@@ -12,14 +13,19 @@ export default function Header() {
           <a className="navLogo" href="https://www.qirayah.com">✧</a>
           <a className="navTitle" href="https://www.qirayah.com">Qirayah</a>
         </div>
-        <ul className="navLinks">
-          <li><Link href="/" className="navLink">Home</Link></li>
-          <li><Link href="/surahs" className="navLink">Surahs</Link></li>
-          <li><Link href="/juzs" className="navLink">Juz</Link></li>
-          <li><Link href="/bookmarks" className="navLink">Bookmarks</Link></li>
-          {/* <li><Link href="/addareciter" className="navLink">Submit a Reciter</Link></li> */}
-          <li><Link href="/settings" className="navLink">Settings</Link></li>
-        </ul>
+        <div className="mobile-only">
+          <MobileNav/>
+        </div>
+        <div className="desktop-only">
+          <ul className="navLinks">
+            <li><Link href="/" className="navLink">Home</Link></li>
+            <li><Link href="/surahs" className="navLink">Surahs</Link></li>
+            <li><Link href="/juzs" className="navLink">Juz</Link></li>
+            <li><Link href="/bookmarks" className="navLink">Bookmarks</Link></li>
+            {/* <li><Link href="/addareciter" className="navLink">Submit a Reciter</Link></li> */}
+            <li><Link href="/settings" className="navLink">Settings</Link></li>
+          </ul>
+        </div>
         {/* <div className="navActions">
           <div className="navSearch">
             <input
