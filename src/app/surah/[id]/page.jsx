@@ -99,7 +99,7 @@ export default function SurahPage() {
       <main className="main">
         <section className="hero">
           <p className="heroArabic">{surah.name_arabic}</p>
-          <h1 className="surahTitle">{surah.name_complex}</h1>
+          <h1 className="surahTitle">{surah.name_simple}</h1>
           <p className="heroTranslation">{surah.translated_name.name}</p>
           <div className="surahMeta">
             <span>{surah.verses_count} verses</span>
@@ -161,7 +161,8 @@ export default function SurahPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      
+      <Footer title={surah.name_simple} artist={allRecitersIds.find(reciter => reciter.id === selectedReciter?.id)?.displayName || "Unknown Artist."} mushaf={allRecitersIds.find(r => r.id === selectedReciter?.id)?.riwayat?.[selectedMushaf]}/>
     </div>
   );
 }
