@@ -22,7 +22,7 @@ export default function Header() {
             <li><Link href="/surahs" className="navLink">Surahs</Link></li>
             <li><Link href="/juzs" className="navLink">Juz</Link></li>
             <li><Link href="/bookmarks" className="navLink">Bookmarks</Link></li>
-            <li><Link href="/suggest-reciter" className="navLink">Sugest a Reciter</Link></li>
+            <li><Link href="/suggest-reciter" className="navLink">Suggest a Reciter</Link></li>
             <li><Link href="/settings" className="navLink">Settings</Link></li>
           </ul>
         </div>
