@@ -1,5 +1,17 @@
 import express from 'express'
 import cors from 'cors'
+import { Resend } from 'resend';
+
+
+import dotenv from 'dotenv'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+console.log("OOOOOOOOOOOO: " + __dirname)
+dotenv.config({ path: path.resolve(__dirname, '../../.env.local') })
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 const app = express();
 
@@ -80,6 +92,27 @@ app.get("/api/reciters", async (req, res) => {
     // console.log(data)
   } catch (myErr) {
     res.status(500).json({ error: 'Failed to fetch list of reciters '})
+  }
+})
+
+app.post('/api/suggest-reciter', async (req, res) => {
+  console.log("route hit", req.body)
+  const { name, link, note } = req.body;
+  console.log("API key:", process.env.RESEND_API_KEY);
+  try {
+    const response = await resend.emails.send({
+      from: 'Qirayah <support@qirayah.com>',
+      to: 'support@qirayah.com',
+      subject: '1 New Reciter Suggestion!',
+      html: `<p><b>Reciter:</b> ${name}</p>
+             <p><b>Link:</b> ${link}</p>
+             <p><b>Note:</b> ${note}</p>`
+    })
+    res.json({ success: true })
+    console.log(response)
+  } catch (myErr) {
+    console.log(myErr)
+    res.status(500).json({ error: 'Failed to submit form.. '})
   }
 })
 
