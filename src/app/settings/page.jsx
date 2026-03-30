@@ -2,12 +2,13 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useTheme } from "../context/ThemeContext";
+import Link from "next/link";
 
 const themes = [
-    { id: "theme-default", label: "Midnight",    colors: ["#0d1117", "#161b27", "#c9a84c"] },
-    { id: "theme-black",   label: "Almost Black", colors: ["#0a0a0a", "#111111", "#c9a84c"] },
-    { id: "theme-pink",    label: "Pink",         colors: ["#1a0d14", "#2a1020", "#e87fa0"] },
-    { id: "theme-baby-blue", label: "Baby Blue", colors: ["#0d121a", "#101a2a", "#87ceeb"]}
+    { id: "theme-default", label: "Midnight", colors: ["#0d1117", "#161b27", "#c9a84c"] },
+    { id: "theme-black", label: "Almost Black", colors: ["#0a0a0a", "#111111", "#c9a84c"] },
+    { id: "theme-pink", label: "Pink", colors: ["#1a0d14", "#2a1020", "#e87fa0"] },
+    { id: "theme-baby-blue", label: "Baby Blue", colors: ["#0d121a", "#101a2a", "#87ceeb"] }
 ];
 
 export default function Settings() {
@@ -49,6 +50,10 @@ export default function Settings() {
                                 </button>
                             ))}
                         </div>
+                    </div>
+                    <div className="settingsGroup reportBugs">
+                        <h3 className="settingsLabel" style={{marginBottom: "0"}}>Report a Bug</h3>
+                        <p className="comingSoonText" style={{margin: "0"}}>Is something not working as intended and ruining your experience on Qirayah? <Link href="/report-bugs" style={{color: "#008fee"}}>Click here to report it.</Link></p>
                     </div>
                 </section>
             </main>

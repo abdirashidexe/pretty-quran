@@ -19,9 +19,17 @@ export default function suggestReciter() {
     //     setSubmitted(true)
     // }
 
+    const [validationError, setValidationError] = useState("")
     const handleSubmit = async (userEvent) => {
         userEvent.preventDefault();
         console.log(name, link, note)
+
+        setValidationError("")
+        // if (name === "" || link === "") {
+        if (!name || !link) {
+            setValidationError("Missing required fields.")
+            return
+        }
 
         await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/suggest-reciter`, {
             method: 'POST',
@@ -44,29 +52,31 @@ export default function suggestReciter() {
                     <h1 className="pageTitle">Suggest a Reciter</h1>
                     {submitted ? (
                         <>
-                        <p className="formSuccess">Thanks! We'll look into it 🤍</p>
-                        <Link href="/surahs" className="btn" id="all-surahs-btn">Go to All Surahs</Link>
+                            <p className="formSuccess">Thanks! We'll look into it 🤍</p>
+                            <Link href="/surahs" className="btn" id="all-surahs-btn">Go to All Surahs</Link>
                         </>
                     ) : (
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} noValidate>
                             <label className="formLabel">
                                 Reciter's Name
-                                <input className="formInput" type="text" value={name} onChange={(userEvent) => setName(userEvent.target.value)} />
+                                <input className="formInput" type="text" value={name} onChange={(userEvent) => setName(userEvent.target.value)} required />
                             </label>
                             <label className="formLabel">
                                 Link to Playlist (YouTube / Spotify / SoundCloud / etc.)
-                                <input className="formInput" type="text" value={link} onChange={(userEvent) => setLink(userEvent.target.value)} />
+                                <input className="formInput" type="text" value={link} onChange={(userEvent) => setLink(userEvent.target.value)} required />
                             </label>
                             <label className="formLabel">
                                 Note / Message
                                 <textarea className="formInput formTextarea" value={note} onChange={(userEvent) => setNote(userEvent.target.value)} />
                             </label>
+                            {validationError !== "" ? <p className="validation-error">{validationError}</p> : ""}
                             <button className="formSubmit" type="submit">Submit</button>
                         </form>
                     )}
                 </main>
+                <Footer />
             </div>
-            <Footer />
+
         </>
     )
 }

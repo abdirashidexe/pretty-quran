@@ -15,7 +15,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 const app = express();
 
-app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3001', "https://www.qirayah.com", "https://qirayah.com"]}));
+app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:3001', "https://www.qirayah.com", "https://qirayah.com"] }));
 app.use(express.json());
 
 app.get('/api/surah/:id', async (req, res) => {
@@ -64,7 +64,7 @@ app.get('/api/juz', async (req, res) => {
 })
 
 app.get('/api/chapter_recitations/:id/:chapter_number', async (req, res) => {
-  
+
   const { id, chapter_number } = req.params;
 
   try {
@@ -75,7 +75,7 @@ app.get('/api/chapter_recitations/:id/:chapter_number', async (req, res) => {
     res.json(data) // encoding the data
     // console.log(data)
   } catch (myError) {
-    res.status(500).json({ error: 'Failed to fetch audio recitation'})
+    res.status(500).json({ error: 'Failed to fetch audio recitation' })
   }
 })
 
@@ -91,7 +91,7 @@ app.get("/api/reciters", async (req, res) => {
     res.json(data);
     // console.log(data)
   } catch (myErr) {
-    res.status(500).json({ error: 'Failed to fetch list of reciters '})
+    res.status(500).json({ error: 'Failed to fetch list of reciters ' })
   }
 })
 
@@ -112,7 +112,26 @@ app.post('/api/suggest-reciter', async (req, res) => {
     console.log(response)
   } catch (myErr) {
     console.log(myErr)
-    res.status(500).json({ error: 'Failed to submit form.. '})
+    res.status(500).json({ error: 'Failed to submit form.. ' })
+  }
+});
+
+app.post("/api/report-bugs", async (req, res) => {
+  try {
+    const { subject, bugDesc } = req.body;
+
+    const response = await resend.emails.send({
+      from: 'Qirayah <support@qirayah.com>',
+      to: 'support@qirayah.com',
+      subject: '1 New Bug Reported!',
+      html: `<p><b>Subject:</b> ${subject}</p>
+             <p><b>Description of Bug:</b> ${bugDesc}</p>`
+    })
+    res.json({ success: true })
+    console.log(response)
+  } catch (myErr) {
+    console.log(myErr)
+    res.status(500).json({ error: "Failed to submit bug form.." }) // Q1: what happens if i replace "error" with myErr?
   }
 })
 

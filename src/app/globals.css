@@ -991,6 +991,19 @@ form {
   text-align: center;
 }
 
+/* Validaton Error */
+.validation-error {
+  color: rgb(177, 5, 5);
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+}
+
+.reportBugs {
+  margin-top: 25px;
+  text-align: center;
+  align-items: center;
+}
 
 /* ─── Footer ─────────────────────────────────────────── */
 .footer {
