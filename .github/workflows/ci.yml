@@ -1,0 +1,25 @@
+name: myFirstCI # name of my ci workflow for GitHub UI
+
+on:
+  pull_request: # this workflow runs whenever pull request is open to main
+    branches: [main]
+
+jobs: # tasks i need CI to run; can be many.
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code # name could be naything
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm CI # similar to Docker lockdowns, but this locks down ONLY JavaScript packages in my packagelock.json. Docker locksdown EVERYHTING (OS, Node version, NPM version, every system depednecny)
+
+      - name: Build
+      - run: npm run build
