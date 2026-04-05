@@ -1,0 +1,36 @@
+name: Qirayah CI # name shown in GitHub's UI
+
+on:
+  pull_request: # only runs when a PR is opened targeting main
+    branches: [main]
+
+jobs: # one or more independent tasks CI needs to run
+  qirayah-build-and-test: # renamed from "build" - this is just a label you made up
+    runs-on: ubuntu-latest # spin up a fresh blank Linux machine to run everything on
+
+    steps:
+      - name: Pull my code onto the Ubuntu machine
+        uses: actions/checkout@v4 # pre-built action - puts your repo files on the GitHub provided VM
+
+      - name: Install Node.js on the Ubuntu machine
+        uses: actions/setup-node@v4 # pre-built action - installs Node so npm commands work (on the VM)
+        with:
+          node-version: '20' # match the Node version you use locally
+          cache: 'npm' # save node_modules between runs so it's faster next time
+
+      # npm CI should be lowercase: npm ci - (uppercase CI means something completely different on the command line)
+      - name: Install my JavaScript packages (locked to package-lock.json versions)
+        run: npm ci # # like npm install but uses exact versions from package-lock.jso --- vs Docker locksdown EVERYHTING (OS, Node version, NPM version, every system depednecny)
+
+      - name: Install backend dependencies
+        run: npm ci
+        working-directory: src/backend
+
+      - name: Build Qirayah for production
+        run: npm run build # reads package.json scripts.build → runs "next build"
+
+      - name: Run unit tests and integration tests
+        run: npm test # reads package.json scripts.test → runs "vitest run"
+        env: 
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
