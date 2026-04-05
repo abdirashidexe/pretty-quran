@@ -1,3 +1,5 @@
+// @vitest-environment node
+
 import { describe, it, expect } from 'vitest'
 import request from 'supertest'
 import app from '../src/backend/server.js'
