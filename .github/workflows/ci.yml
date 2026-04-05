@@ -25,5 +25,8 @@ jobs: # one or more independent tasks CI needs to run
       - name: Build Qirayah for production
         run: npm run build # reads package.json scripts.build → runs "next build"
 
-      - name: Run unit tests
+      - name: Run unit tests and integration tests
         run: npm test # reads package.json scripts.test → runs "vitest run"
+        env: 
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}

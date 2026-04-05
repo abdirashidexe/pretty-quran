@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-console.log("OOOOOOOOOOOO: " + __dirname)
+// console.log("OOOOOOOOOOOO: " + __dirname)
 dotenv.config({ path: path.resolve(__dirname, '../../.env.local') })
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -116,4 +116,11 @@ app.post('/api/suggest-reciter', async (req, res) => {
   }
 })
 
-app.listen(3001, () => console.log('Express on port 3001'));
+// app.listen(3001, () => console.log('Express on port 3001'));
+
+export default app;
+
+// i run "node server.js" --> process.argv[1] is server.js
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  app.listen(3001, () => console.log('Express on port 3001'))
+}
