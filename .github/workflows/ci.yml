@@ -22,6 +22,10 @@ jobs: # one or more independent tasks CI needs to run
       - name: Install my JavaScript packages (locked to package-lock.json versions)
         run: npm ci # # like npm install but uses exact versions from package-lock.jso --- vs Docker locksdown EVERYHTING (OS, Node version, NPM version, every system depednecny)
 
+      - name: Install backend dependencies
+        run: npm ci
+        working-directory: src/backend
+
       - name: Build Qirayah for production
         run: npm run build # reads package.json scripts.build → runs "next build"
 
